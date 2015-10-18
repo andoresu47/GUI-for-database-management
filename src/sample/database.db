@@ -1,0 +1,245 @@
+-- SQL for Books, Authors and Publishers tables
+
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS Books;
+DROP TABLE IF EXISTS Authors;
+DROP TABLE IF EXISTS Publishers;
+DROP TABLE IF EXISTS Subjects;
+
+DROP TABLE IF EXISTS WroteBy;
+DROP TABLE IF EXISTS PublishedBy_On;
+DROP TABLE IF EXISTS BelongsToSubject;
+
+CREATE TABLE IF NOT EXISTS Authors(
+	AuthorId INTEGER PRIMARY KEY,
+	Author TEXT NOT NULL
+);
+INSERT INTO Authors VALUES(1, 'J. R. R. Tolkien');
+INSERT INTO Authors VALUES(2, 'Isaac Asimov');
+INSERT INTO Authors VALUES(3, 'Michael Crichton');
+INSERT INTO Authors VALUES(4, 'Adolf Hitler');
+INSERT INTO Authors VALUES(5, '');
+INSERT INTO Authors VALUES(6, '');
+INSERT INTO Authors VALUES(7, '');
+INSERT INTO Authors VALUES(8, '');
+INSERT INTO Authors VALUES(9, '');
+INSERT INTO Authors VALUES(10, '');
+INSERT INTO Authors VALUES(11, '');
+INSERT INTO Authors VALUES(12, '');
+INSERT INTO Authors VALUES(13, '');
+INSERT INTO Authors VALUES(14, '');
+INSERT INTO Authors VALUES(15, '');
+INSERT INTO Authors VALUES(16, '');
+INSERT INTO Authors VALUES(17, '');
+INSERT INTO Authors VALUES(18, '');
+INSERT INTO Authors VALUES(19, '');
+INSERT INTO Authors VALUES(20, '');
+INSERT INTO Authors VALUES(21, '');
+INSERT INTO Authors VALUES(22, '');
+INSERT INTO Authors VALUES(23, '');
+INSERT INTO Authors VALUES(24, '');
+INSERT INTO Authors VALUES(25, '');
+INSERT INTO Authors VALUES(26, '');
+INSERT INTO Authors VALUES(27, '');
+INSERT INTO Authors VALUES(28, '');
+INSERT INTO Authors VALUES(29, '');
+INSERT INTO Authors VALUES(30, '');
+INSERT INTO Authors VALUES(31, '');
+INSERT INTO Authors VALUES(32, '');
+INSERT INTO Authors VALUES(33, '');
+INSERT INTO Authors VALUES(34, '');
+INSERT INTO Authors VALUES(35, '');
+INSERT INTO Authors VALUES(36, '');
+INSERT INTO Authors VALUES(37, '');
+INSERT INTO Authors VALUES(38, '');
+INSERT INTO Authors VALUES(39, '');
+INSERT INTO Authors VALUES(40, '');
+INSERT INTO Authors VALUES(41, '');
+INSERT INTO Authors VALUES(42, '');
+INSERT INTO Authors VALUES(43, '');
+INSERT INTO Authors VALUES(44, '');
+INSERT INTO Authors VALUES(45, '');
+INSERT INTO Authors VALUES(46, '');
+INSERT INTO Authors VALUES(47, '');
+INSERT INTO Authors VALUES(48, '');
+INSERT INTO Authors VALUES(49, '');
+INSERT INTO Authors VALUES(50, '');
+
+
+CREATE TABLE IF NOT EXISTS Books(
+	BookId INTEGER PRIMARY KEY,
+	Title TEXT NOT NULL
+);
+INSERT INTO Books VALUES(1, 'The Hobbit');
+INSERT INTO Books VALUES(2, 'Mein Kampf');
+INSERT INTO Books VALUES(3, 'I, Robot');
+INSERT INTO Books VALUES(4, 'Jurassic Park');
+INSERT INTO Books VALUES(5, 'The Fellowship of the Ring');
+INSERT INTO Books VALUES(6, 'The Lost World');
+INSERT INTO Books VALUES(7, 'The Two Towers');
+INSERT INTO Books VALUES(8, 'The Return of The King');
+INSERT INTO Books VALUES(9, 'The Lord of The Rings');
+INSERT INTO Books VALUES(10, 'The Silmarillion');
+INSERT INTO Books VALUES(11, '');
+INSERT INTO Books VALUES(12, '');
+INSERT INTO Books VALUES(13, '');
+INSERT INTO Books VALUES(14, '');
+INSERT INTO Books VALUES(15, '');
+INSERT INTO Books VALUES(16, '');
+INSERT INTO Books VALUES(17, '');
+INSERT INTO Books VALUES(18, '');
+INSERT INTO Books VALUES(19, '');
+INSERT INTO Books VALUES(20, '');
+INSERT INTO Books VALUES(21, '');
+INSERT INTO Books VALUES(22, '');
+INSERT INTO Books VALUES(23, '');
+INSERT INTO Books VALUES(24, '');
+INSERT INTO Books VALUES(25, '');
+INSERT INTO Books VALUES(26, '');
+INSERT INTO Books VALUES(27, '');
+INSERT INTO Books VALUES(28, '');
+INSERT INTO Books VALUES(29, '');
+INSERT INTO Books VALUES(30, '');
+INSERT INTO Books VALUES(31, '');
+INSERT INTO Books VALUES(32, '');
+INSERT INTO Books VALUES(33, '');
+INSERT INTO Books VALUES(34, '');
+INSERT INTO Books VALUES(35, '');
+INSERT INTO Books VALUES(36, '');
+INSERT INTO Books VALUES(37, '');
+INSERT INTO Books VALUES(38, '');
+INSERT INTO Books VALUES(39, '');
+INSERT INTO Books VALUES(40, '');
+INSERT INTO Books VALUES(41, '');
+INSERT INTO Books VALUES(42, '');
+INSERT INTO Books VALUES(43, '');
+INSERT INTO Books VALUES(44, '');
+INSERT INTO Books VALUES(45, '');
+INSERT INTO Books VALUES(46, '');
+INSERT INTO Books VALUES(47, '');
+INSERT INTO Books VALUES(48, '');
+INSERT INTO Books VALUES(49, '');
+INSERT INTO Books VALUES(50, '');
+
+
+CREATE TABLE IF NOT EXISTS Publishers(
+	PublisherId INTEGER PRIMARY KEY,
+	Publisher TEXT NOT NULL
+);
+INSERT INTO Publishers VALUES(1, 'Random House Publishing Group');
+INSERT INTO Publishers VALUES(2, 'Elite Minds');
+INSERT INTO Publishers VALUES(3, 'Houghton Mifflin Harcourt');
+INSERT INTO Publishers VALUES(4, 'Del Rey');
+INSERT INTO Publishers VALUES(5, '');
+INSERT INTO Publishers VALUES(6, '');
+INSERT INTO Publishers VALUES(7, '');
+INSERT INTO Publishers VALUES(8, '');
+INSERT INTO Publishers VALUES(9, '');
+INSERT INTO Publishers VALUES(10, '');
+INSERT INTO Publishers VALUES(11, '');
+INSERT INTO Publishers VALUES(12, '');
+INSERT INTO Publishers VALUES(13, '');
+INSERT INTO Publishers VALUES(14, '');
+INSERT INTO Publishers VALUES(15, '');
+INSERT INTO Publishers VALUES(16, '');
+INSERT INTO Publishers VALUES(17, '');
+INSERT INTO Publishers VALUES(18, '');
+INSERT INTO Publishers VALUES(19, '');
+INSERT INTO Publishers VALUES(20, '');
+INSERT INTO Publishers VALUES(21, '');
+INSERT INTO Publishers VALUES(22, '');
+INSERT INTO Publishers VALUES(23, '');
+INSERT INTO Publishers VALUES(24, '');
+INSERT INTO Publishers VALUES(25, '');
+INSERT INTO Publishers VALUES(26, '');
+INSERT INTO Publishers VALUES(27, '');
+INSERT INTO Publishers VALUES(28, '');
+INSERT INTO Publishers VALUES(29, '');
+INSERT INTO Publishers VALUES(30, '');
+INSERT INTO Publishers VALUES(31, '');
+INSERT INTO Publishers VALUES(32, '');
+INSERT INTO Publishers VALUES(33, '');
+INSERT INTO Publishers VALUES(34, '');
+INSERT INTO Publishers VALUES(35, '');
+INSERT INTO Publishers VALUES(36, '');
+INSERT INTO Publishers VALUES(37, '');
+INSERT INTO Publishers VALUES(38, '');
+INSERT INTO Publishers VALUES(39, '');
+INSERT INTO Publishers VALUES(40, '');
+INSERT INTO Publishers VALUES(41, '');
+INSERT INTO Publishers VALUES(42, '');
+INSERT INTO Publishers VALUES(43, '');
+INSERT INTO Publishers VALUES(44, '');
+INSERT INTO Publishers VALUES(45, '');
+INSERT INTO Publishers VALUES(46, '');
+INSERT INTO Publishers VALUES(47, '');
+INSERT INTO Publishers VALUES(48, '');
+INSERT INTO Publishers VALUES(49, '');
+INSERT INTO Publishers VALUES(50, '');
+
+
+CREATE TABLE IF NOT EXISTS Subjects(
+	SubjectId INTEGER PRIMARY KEY,
+	Subject TEXT NOT NULL
+);
+INSERT INTO Subjects VALUES(1, 'Epic Fantasy');
+INSERT INTO Subjects VALUES(2, 'Fantasy Sagas');
+INSERT INTO Subjects VALUES(3, 'Historical Fantasy');
+INSERT INTO Subjects VALUES(4, 'Science Fiction');
+INSERT INTO Subjects VALUES(5, 'Robots');
+INSERT INTO Subjects VALUES(6, 'Artificial Intelligence');
+INSERT INTO Subjects VALUES(7, 'Propaganda');
+INSERT INTO Subjects VALUES(8, 'Thriller');
+INSERT INTO Subjects VALUES(9, 'Prehistoric Creatures');
+
+
+CREATE TABLE IF NOT EXISTS WroteBy(
+	BookId INTEGER PRIMARY KEY,
+	AuthorId INTEGER NOT NULL
+);
+INSERT INTO WroteBy VALUES(1, 1);
+INSERT INTO WroteBy VALUES(2, 4);
+INSERT INTO WroteBy VALUES(3, 2);
+INSERT INTO WroteBy VALUES(4, 3);
+INSERT INTO WroteBy VALUES(5, 1);
+INSERT INTO WroteBy VALUES(6, 3);
+
+
+CREATE TABLE IF NOT EXISTS PublishedBy_On(
+	BookId INTEGER NOT NULL,
+	PublisherId INTEGER NOT NULL,
+	Date TEXT
+);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(1, 3, '2012-18-09');
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(1, 4, '2012-25-09');
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(2, 2, '2009-14-04');
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(3, 1, '2008-29-04');
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(4, 1, '2012-25-09');
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(5, 3, '2012-18-09');
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(6, 1, '2012-30-10');
+
+
+CREATE TABLE IF NOT EXISTS BelongsToSubject(
+	BookId INTEGER NOT NULL,
+	SubjectId INTEGER NOT NULL
+);
+INSERT INTO BelongsToSubject VALUES(1, 1);
+INSERT INTO BelongsToSubject VALUES(1, 2);
+INSERT INTO BelongsToSubject VALUES(1, 3);
+INSERT INTO BelongsToSubject VALUES(2, 7);
+INSERT INTO BelongsToSubject VALUES(3, 4);
+INSERT INTO BelongsToSubject VALUES(3, 5);
+INSERT INTO BelongsToSubject VALUES(3, 6);
+INSERT INTO BelongsToSubject VALUES(4, 4);
+INSERT INTO BelongsToSubject VALUES(4, 8);
+INSERT INTO BelongsToSubject VALUES(4, 9);
+INSERT INTO BelongsToSubject VALUES(5, 1);
+INSERT INTO BelongsToSubject VALUES(5, 2);
+INSERT INTO BelongsToSubject VALUES(5, 3);
+INSERT INTO BelongsToSubject VALUES(6, 4);
+INSERT INTO BelongsToSubject VALUES(6, 8);
+INSERT INTO BelongsToSubject VALUES(6, 9);
+
+
+COMMIT;
