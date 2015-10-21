@@ -185,21 +185,38 @@ INSERT INTO Books VALUES(76, 'The Importance of Being Ernest');
 
 INSERT INTO Books VALUES(77, '1Q84');
 
-INSERT INTO Books VALUES(78, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(79, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(80, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(81, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(82, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(83, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(84, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(85, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(86, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(87, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(88, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(89, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(90, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(75, 'The Picture of Dorian Grey');
-INSERT INTO Books VALUES(75, 'The Picture of Dorian Grey');
+INSERT INTO Books VALUES(78, 'Pride and Prejudice');
+
+INSERT INTO Books VALUES(79, 'Macbeth');
+INSERT INTO Books VALUES(80, 'Romeo and Juliet');
+INSERT INTO Books VALUES(81, 'Othello');
+INSERT INTO Books VALUES(82, 'The Tempest');
+
+INSERT INTO Books VALUES(83, 'The Odyssey');
+INSERT INTO Books VALUES(84, 'The Iliad');
+
+INSERT INTO Books VALUES(85, 'The Aeneid');
+
+INSERT INTO Books VALUES(86, 'The Da Vinci Code');
+INSERT INTO Books VALUES(87, 'The Lost Symbol');
+INSERT INTO Books VALUES(88, 'Inferno');
+
+INSERT INTO Books VALUES(89, 'The Girl with the Dragon Tattoo');
+INSERT INTO Books VALUES(90, 'The Girl Who Played with Fire');
+INSERT INTO Books VALUES(91, 'The Girl Who Kicked the Hornet's Nest');
+
+INSERT INTO Books VALUES(92, 'A First Course in General Relativity');
+INSERT INTO Books VALUES(93, 'Geometrical Methods of Mathematical Physics');
+
+INSERT INTO Books VALUES(94, 'Quantum Mechanics: The Theoretical Minimum');
+INSERT INTO Books VALUES(95, 'The Black Hole War');
+
+INSERT INTO Books VALUES(96, 'A Brief History of Time');
+INSERT INTO Books VALUES(97, 'The Grand Design');
+
+INSERT INTO Books VALUES(98, 'Cosmos');
+
+INSERT INTO Books VALUES(99, '');
 
 
 
@@ -262,6 +279,12 @@ INSERT INTO Publishers VALUES(51, 'Schocken');
 INSERT INTO Publishers VALUES(52, 'Mulholland Books');
 INSERT INTO Publishers VALUES(53, 'Futabasha');
 INSERT INTO Publishers VALUES(54, 'Simon & Brown');
+INSERT INTO Publishers VALUES(55, 'Simon & Schuster');
+INSERT INTO Publishers VALUES(56, 'SparkNotes');
+INSERT INTO Publishers VALUES(57, 'University Of Chicago Press');
+INSERT INTO Publishers VALUES(58, 'Cambridge University Press');
+INSERT INTO Publishers VALUES(59, 'Basic Books');
+INSERT INTO Publishers VALUES(60, 'Back Bay Books');
 
 
 CREATE TABLE IF NOT EXISTS Subjects(
@@ -292,7 +315,17 @@ INSERT INTO Subjects VALUES(21, 'Contemporary');
 INSERT INTO Subjects VALUES(22, 'Short Stories');
 INSERT INTO Subjects VALUES(23, 'Poetry');
 INSERT INTO Subjects VALUES(24, 'Spanish');
-INSERT INTO Subjects VALUES(25, '');
+INSERT INTO Subjects VALUES(25, 'Drama');
+INSERT INTO Subjects VALUES(26, 'Mystery');
+INSERT INTO Subjects VALUES(27, 'Textbooks');
+INSERT INTO Subjects VALUES(28, 'Physics');
+INSERT INTO Subjects VALUES(29, 'Relativity');
+INSERT INTO Subjects VALUES(30, 'Mathematics');
+INSERT INTO Subjects VALUES(31, 'Science');
+INSERT INTO Subjects VALUES(32, 'Differential Geometry');
+INSERT INTO Subjects VALUES(33, 'Quantum Theory');
+INSERT INTO Subjects VALUES(34, 'Astronomy');
+INSERT INTO Subjects VALUES(35, 'Cosmology');
 
 
 CREATE TABLE IF NOT EXISTS WroteBy(
@@ -413,7 +446,39 @@ INSERT INTO WroteBy VALUES(76, 36);
 
 INSERT INTO WroteBy VALUES(77, 37);
 
-INSERT INTO WroteBy VALUES(66, 29);
+INSERT INTO WroteBy VALUES(78, 38);
+
+INSERT INTO WroteBy VALUES(79, 39);
+INSERT INTO WroteBy VALUES(80, 39);
+INSERT INTO WroteBy VALUES(81, 39);
+INSERT INTO WroteBy VALUES(82, 39);
+
+INSERT INTO WroteBy VALUES(83, 40);
+INSERT INTO WroteBy VALUES(84, 40);
+
+INSERT INTO WroteBy VALUES(85, 41);
+
+INSERT INTO WroteBy VALUES(86, 42);
+INSERT INTO WroteBy VALUES(87, 42);
+INSERT INTO WroteBy VALUES(88, 42);
+
+INSERT INTO WroteBy VALUES(89, 43);
+INSERT INTO WroteBy VALUES(90, 43);
+INSERT INTO WroteBy VALUES(91, 43);
+
+INSERT INTO WroteBy VALUES(92, 44);
+INSERT INTO WroteBy VALUES(93, 44);
+
+INSERT INTO WroteBy VALUES(94, 45);
+INSERT INTO WroteBy VALUES(95, 45);
+
+INSERT INTO WroteBy VALUES(96, 46);
+INSERT INTO WroteBy VALUES(97, 46);
+
+INSERT INTO WroteBy VALUES(98, 47);
+
+INSERT INTO WroteBy VALUES(99, );
+
 
 
 CREATE TABLE IF NOT EXISTS PublishedBy_On(
@@ -599,7 +664,60 @@ INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(76, 54, 2013);
 
 INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(77, 24, 2013);
 
-INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(73, 51, 1998);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(78, 17, 2014);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(78, 18, 1995);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(79, 55, 2003);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(80, 55, 2004);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(81, 55, 1993);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(82, 55, 2004);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(82, 56, 2003);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(83, 6, 2007);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(83, 22, 2000);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(83, 21, 1999);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(84, 22, 1997);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(84, 57, 2011);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(84, 21, 1998)
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(85, 21, 2008);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(85, 22, 2005);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(86, 16, 2009);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(87, 16, 2012);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(88, 16, 2014);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(89, 24, 2011);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(89, 11, 2012);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(90, 24, 2011);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(90, 11, 2010);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(91, 24, 2012);
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(91, 11, 2010);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(92, 58, 2009);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(93, 58, 1980);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(94, 59, 2015);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(95, 60, 2009);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(96, 15, 1998);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(97, 15, 2012);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(98, 10, 2013);
+
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(, , );
+INSERT INTO PublishedBy_On(BookId, PublisherId, Date) VALUES(, , );
 
 
 CREATE TABLE IF NOT EXISTS BelongsToSubject(
