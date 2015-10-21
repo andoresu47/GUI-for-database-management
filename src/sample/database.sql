@@ -344,6 +344,12 @@ INSERT INTO Subjects VALUES(39, 'Apologetics');
 INSERT INTO Subjects VALUES(40, 'Magic');
 INSERT INTO Subjects VALUES(41, 'Supernatural');
 INSERT INTO Subjects VALUES(42, 'Religion');
+INSERT INTO Subjects VALUES(43, 'Romance');
+INSERT INTO Subjects VALUES(44, 'Non-fiction');
+INSERT INTO Subjects VALUES(45, 'Politics');
+INSERT INTO Subjects VALUES(46, 'Comedy');
+INSERT INTO Subjects VALUES(47, 'Dystopian');
+INSERT INTO Subjects VALUES(48, 'Epic');
 
 
 CREATE TABLE IF NOT EXISTS WrittenBy(
@@ -504,7 +510,6 @@ INSERT INTO WrittenBy VALUES(102, 49);
 INSERT INTO WrittenBy VALUES(103, 50);
 INSERT INTO WrittenBy VALUES(104, 50);
 INSERT INTO WrittenBy VALUES(105, 50);
-
 
 
 CREATE TABLE IF NOT EXISTS PublishedBy_On(
@@ -906,68 +911,189 @@ INSERT INTO BelongsToSubject VALUES(40, 2);
 INSERT INTO BelongsToSubject VALUES(40, 9);
 INSERT INTO BelongsToSubject VALUES(40, 24);
 
-INSERT INTO BelongsToSubject VALUES(41, );
-INSERT INTO BelongsToSubject VALUES(42, );
-INSERT INTO BelongsToSubject VALUES(43, );
-INSERT INTO BelongsToSubject VALUES(44, );
-INSERT INTO BelongsToSubject VALUES(45, );
-INSERT INTO BelongsToSubject VALUES(46, );
-INSERT INTO BelongsToSubject VALUES(47, );
-INSERT INTO BelongsToSubject VALUES(48, );
-INSERT INTO BelongsToSubject VALUES(49, );
-INSERT INTO BelongsToSubject VALUES(50, );
-INSERT INTO BelongsToSubject VALUES(51, );
-INSERT INTO BelongsToSubject VALUES(52, );
-INSERT INTO BelongsToSubject VALUES(53, );
-INSERT INTO BelongsToSubject VALUES(54, );
-INSERT INTO BelongsToSubject VALUES(55, );
-INSERT INTO BelongsToSubject VALUES(56, );
-INSERT INTO BelongsToSubject VALUES(57, );
-INSERT INTO BelongsToSubject VALUES(58, );
-INSERT INTO BelongsToSubject VALUES(59, );
-INSERT INTO BelongsToSubject VALUES(60, );
-INSERT INTO BelongsToSubject VALUES(61, );
-INSERT INTO BelongsToSubject VALUES(62, );
-INSERT INTO BelongsToSubject VALUES(63, );
-INSERT INTO BelongsToSubject VALUES(64, );
-INSERT INTO BelongsToSubject VALUES(65, );
-INSERT INTO BelongsToSubject VALUES(66, );
-INSERT INTO BelongsToSubject VALUES(67, );
-INSERT INTO BelongsToSubject VALUES(68, );
-INSERT INTO BelongsToSubject VALUES(69, );
-INSERT INTO BelongsToSubject VALUES(70, );
-INSERT INTO BelongsToSubject VALUES(71, );
-INSERT INTO BelongsToSubject VALUES(72, );
-INSERT INTO BelongsToSubject VALUES(73, );
-INSERT INTO BelongsToSubject VALUES(74, );
-INSERT INTO BelongsToSubject VALUES(75, );
-INSERT INTO BelongsToSubject VALUES(76, );
-INSERT INTO BelongsToSubject VALUES(77, );
-INSERT INTO BelongsToSubject VALUES(78, );
-INSERT INTO BelongsToSubject VALUES(79, );
-INSERT INTO BelongsToSubject VALUES(80, );
-INSERT INTO BelongsToSubject VALUES(81, );
-INSERT INTO BelongsToSubject VALUES(82, );
-INSERT INTO BelongsToSubject VALUES(83, );
-INSERT INTO BelongsToSubject VALUES(84, );
-INSERT INTO BelongsToSubject VALUES(85, );
-INSERT INTO BelongsToSubject VALUES(86, );
-INSERT INTO BelongsToSubject VALUES(87, );
-INSERT INTO BelongsToSubject VALUES(88, );
+INSERT INTO BelongsToSubject VALUES(41, 2);
+INSERT INTO BelongsToSubject VALUES(41, 22);
+INSERT INTO BelongsToSubject VALUES(41, 24);
+
+INSERT INTO BelongsToSubject VALUES(42, 2);
+INSERT INTO BelongsToSubject VALUES(42, 22);
+INSERT INTO BelongsToSubject VALUES(42, 24);
+
+INSERT INTO BelongsToSubject VALUES(43, 2);
+INSERT INTO BelongsToSubject VALUES(43, 11);
+INSERT INTO BelongsToSubject VALUES(43, 24);
+
+INSERT INTO BelongsToSubject VALUES(44, 11);
+INSERT INTO BelongsToSubject VALUES(44, 43);
+
+INSERT INTO BelongsToSubject VALUES(45, 2);
+INSERT INTO BelongsToSubject VALUES(45, 11);
+INSERT INTO BelongsToSubject VALUES(45, 24);
+
+INSERT INTO BelongsToSubject VALUES(46, 2);
+INSERT INTO BelongsToSubject VALUES(46, 11);
+INSERT INTO BelongsToSubject VALUES(46, 24);
+INSERT INTO BelongsToSubject VALUES(46, 43);
+
+INSERT INTO BelongsToSubject VALUES(47, 11);
+INSERT INTO BelongsToSubject VALUES(47, 21);
+
+INSERT INTO BelongsToSubject VALUES(48, 2);
+INSERT INTO BelongsToSubject VALUES(48, 11);
+INSERT INTO BelongsToSubject VALUES(48, 21);
+INSERT INTO BelongsToSubject VALUES(48, 22);
+
+INSERT INTO BelongsToSubject VALUES(49, 2);
+INSERT INTO BelongsToSubject VALUES(49, 22);
+INSERT INTO BelongsToSubject VALUES(49, 24);
+
+INSERT INTO BelongsToSubject VALUES(50, 15);
+INSERT INTO BelongsToSubject VALUES(50, 22);
+INSERT INTO BelongsToSubject VALUES(50, 24);
+INSERT INTO BelongsToSubject VALUES(50, 44);
+
+INSERT INTO BelongsToSubject VALUES(51, 23);
+
+INSERT INTO BelongsToSubject VALUES(52, 24);
+INSERT INTO BelongsToSubject VALUES(52, 2);
+INSERT INTO BelongsToSubject VALUES(52, 11);
+
+INSERT INTO BelongsToSubject VALUES(53, 24);
+INSERT INTO BelongsToSubject VALUES(53, 9);
+INSERT INTO BelongsToSubject VALUES(53, 22);
+
+INSERT INTO BelongsToSubject VALUES(54, 24);
+INSERT INTO BelongsToSubject VALUES(54, 22);
+INSERT INTO BelongsToSubject VALUES(54, 2);
+
+INSERT INTO BelongsToSubject VALUES(55, 22);
+INSERT INTO BelongsToSubject VALUES(55, 2);
+
+INSERT INTO BelongsToSubject VALUES(56, 23);
+INSERT INTO BelongsToSubject VALUES(56, 24);
+
+INSERT INTO BelongsToSubject VALUES(57, 24);
+INSERT INTO BelongsToSubject VALUES(57, 2);
+
+INSERT INTO BelongsToSubject VALUES(58, 2);
+
+INSERT INTO BelongsToSubject VALUES(59, 2);
+INSERT INTO BelongsToSubject VALUES(59, 24);
+
+INSERT INTO BelongsToSubject VALUES(60, 11);
+
+INSERT INTO BelongsToSubject VALUES(61, 2);
+
+INSERT INTO BelongsToSubject VALUES(62, 24);
+INSERT INTO BelongsToSubject VALUES(62, 45);
+INSERT INTO BelongsToSubject VALUES(62, 15);
+
+INSERT INTO BelongsToSubject VALUES(63, 45);
+INSERT INTO BelongsToSubject VALUES(63, 11);
+INSERT INTO BelongsToSubject VALUES(63, 44);
+
+INSERT INTO BelongsToSubject VALUES(64, 9);
+
+INSERT INTO BelongsToSubject VALUES(65, 2);
+INSERT INTO BelongsToSubject VALUES(65, 9);
+
+INSERT INTO BelongsToSubject VALUES(66, 2);
+INSERT INTO BelongsToSubject VALUES(66, 9);
+
+INSERT INTO BelongsToSubject VALUES(67, 24);
+INSERT INTO BelongsToSubject VALUES(67, 25);
+INSERT INTO BelongsToSubject VALUES(67, 2);
+
+INSERT INTO BelongsToSubject VALUES(68, 23);
+
+INSERT INTO BelongsToSubject VALUES(69, 23);
+
+INSERT INTO BelongsToSubject VALUES(70, 9);
+
+INSERT INTO BelongsToSubject VALUES(71, 24);
+INSERT INTO BelongsToSubject VALUES(71, 2);
+INSERT INTO BelongsToSubject VALUES(71, 11);
+
+INSERT INTO BelongsToSubject VALUES(72, 9);
+INSERT INTO BelongsToSubject VALUES(72, 3);
+
+INSERT INTO BelongsToSubject VALUES(73, 9);
+INSERT INTO BelongsToSubject VALUES(73, 2);
+
+INSERT INTO BelongsToSubject VALUES(74, 14);
+INSERT INTO BelongsToSubject VALUES(74, 25);
+INSERT INTO BelongsToSubject VALUES(74, 26);
+
+INSERT INTO BelongsToSubject VALUES(75, 9);
+INSERT INTO BelongsToSubject VALUES(75, 2);
+
+INSERT INTO BelongsToSubject VALUES(76, 9);
+INSERT INTO BelongsToSubject VALUES(76, 27);
+INSERT INTO BelongsToSubject VALUES(76, 46);
+
+INSERT INTO BelongsToSubject VALUES(77, 3);
+INSERT INTO BelongsToSubject VALUES(77, 47);
+
+INSERT INTO BelongsToSubject VALUES(78, 9);
+INSERT INTO BelongsToSubject VALUES(78, 2);
+
+INSERT INTO BelongsToSubject VALUES(79, 9);
+INSERT INTO BelongsToSubject VALUES(79, 2);
+
+INSERT INTO BelongsToSubject VALUES(80, 9);
+INSERT INTO BelongsToSubject VALUES(80, 2);
+
+INSERT INTO BelongsToSubject VALUES(81, 9);
+INSERT INTO BelongsToSubject VALUES(81, 2);
+
+INSERT INTO BelongsToSubject VALUES(82, 9);
+INSERT INTO BelongsToSubject VALUES(82, 2);
+
+INSERT INTO BelongsToSubject VALUES(83, 9);
+INSERT INTO BelongsToSubject VALUES(83, 23);
+INSERT INTO BelongsToSubject VALUES(83, 48);
+
+INSERT INTO BelongsToSubject VALUES(84, 9);
+INSERT INTO BelongsToSubject VALUES(84, 23);
+INSERT INTO BelongsToSubject VALUES(84, 48);
+
+INSERT INTO BelongsToSubject VALUES(85, 9);
+INSERT INTO BelongsToSubject VALUES(85, 23);
+INSERT INTO BelongsToSubject VALUES(85, 48);
+
+INSERT INTO BelongsToSubject VALUES(86, 7);
+INSERT INTO BelongsToSubject VALUES(86, 11);
+INSERT INTO BelongsToSubject VALUES(86, 26);
+
+INSERT INTO BelongsToSubject VALUES(87, 7);
+INSERT INTO BelongsToSubject VALUES(87, 11);
+INSERT INTO BelongsToSubject VALUES(87, 26);
+
+INSERT INTO BelongsToSubject VALUES(88, 7);
+INSERT INTO BelongsToSubject VALUES(88, 11);
+INSERT INTO BelongsToSubject VALUES(88, 26);
+
 INSERT INTO BelongsToSubject VALUES(89, );
 INSERT INTO BelongsToSubject VALUES(90, );
 INSERT INTO BelongsToSubject VALUES(91, );
+
 INSERT INTO BelongsToSubject VALUES(92, );
 INSERT INTO BelongsToSubject VALUES(93, );
+
 INSERT INTO BelongsToSubject VALUES(94, );
 INSERT INTO BelongsToSubject VALUES(95, );
+
 INSERT INTO BelongsToSubject VALUES(96, );
 INSERT INTO BelongsToSubject VALUES(97, );
+
 INSERT INTO BelongsToSubject VALUES(98, );
+
 INSERT INTO BelongsToSubject VALUES(99, );
 INSERT INTO BelongsToSubject VALUES(100, );
+
 INSERT INTO BelongsToSubject VALUES(101, );
 INSERT INTO BelongsToSubject VALUES(102, );
+
 INSERT INTO BelongsToSubject VALUES(103, );
 INSERT INTO BelongsToSubject VALUES(104, );
 INSERT INTO BelongsToSubject VALUES(105, );
