@@ -11,6 +11,10 @@ DROP TABLE IF EXISTS WrittenBy;
 DROP TABLE IF EXISTS PublishedBy_On;
 DROP TABLE IF EXISTS BelongsToSubject;
 
+
+-- Authors table, consisting of 50 different book authors.
+-- The table consists only of a unique identifier and text fields.
+
 CREATE TABLE IF NOT EXISTS Authors(
 	AuthorId INTEGER PRIMARY KEY,
 	Author TEXT NOT NULL
@@ -66,6 +70,10 @@ INSERT INTO Authors VALUES(48, 'Richard Dawkins');
 INSERT INTO Authors VALUES(49, 'Richard P. Feynman');
 INSERT INTO Authors VALUES(50, 'Albert Einstein');
 
+
+-- Books table, consisting of 105 different books. All written by an
+-- author from the Authors table.
+-- The table consists only of a unique identifier and text fields.
 
 CREATE TABLE IF NOT EXISTS Books(
 	BookId INTEGER PRIMARY KEY,
@@ -227,6 +235,9 @@ INSERT INTO Books VALUES(104, 'Relativity: The Special and General Theory');
 INSERT INTO Books VALUES(105, 'The World As I See It');
 
 
+-- Publishers table, consisting of 50 different book publishers.
+-- The table consists only of a unique identifier and text fields.
+
 CREATE TABLE IF NOT EXISTS Publishers(
 	PublisherId INTEGER PRIMARY KEY,
 	Publisher TEXT NOT NULL
@@ -298,6 +309,9 @@ INSERT INTO Publishers VALUES(64, 'Emporum Books');
 INSERT INTO Publishers VALUES(65, 'BN Publishing');
 
 
+-- Subjects table, consisting of 50 different subjects a certain book can relate to.
+-- The table consists only of a unique identifier and text fields.
+
 CREATE TABLE IF NOT EXISTS Subjects(
 	SubjectId INTEGER PRIMARY KEY,
 	Subject TEXT NOT NULL
@@ -350,7 +364,13 @@ INSERT INTO Subjects VALUES(45, 'Politics');
 INSERT INTO Subjects VALUES(46, 'Comedy');
 INSERT INTO Subjects VALUES(47, 'Dystopian');
 INSERT INTO Subjects VALUES(48, 'Epic');
+INSERT INTO Subjects VALUES(49, 'Space');
+INSERT INTO Subjects VALUES(50, 'Anthologies');
 
+
+-- Relation table linking which author wrote each one of the books of the Books table.
+-- The table consists only of a unique identifier, which represents the book identifier,
+-- and an author identifier; both which are integers.
 
 CREATE TABLE IF NOT EXISTS WrittenBy(
 	BookId INTEGER PRIMARY KEY,
@@ -511,6 +531,11 @@ INSERT INTO WrittenBy VALUES(103, 50);
 INSERT INTO WrittenBy VALUES(104, 50);
 INSERT INTO WrittenBy VALUES(105, 50);
 
+
+-- Relation table linking which publisher published each one of the books of the Books table.
+-- The table consists only of an identifier, which represents the book identifier,
+-- a publisher identifier, and another integer which represents the year of publication.
+-- The books identifier needs not to be unique, since a single book can have one to multiple publishers.
 
 CREATE TABLE IF NOT EXISTS PublishedBy_On(
 	BookId INTEGER NOT NULL,
@@ -761,6 +786,11 @@ INSERT INTO PublishedBy_On(BookId, PublisherId, Year) VALUES(104, 64, 2013);
 
 INSERT INTO PublishedBy_On(BookId, PublisherId, Year) VALUES(105, 65, 2007);
 
+
+-- Relation table linking which book belongs to which subject in the Subjects table.
+-- The table consists only of an identifier, which represents the book identifier,
+-- and a subject identifier; both which are integers.
+-- The books identifier needs not to be unique, since a single book can relate to one or multiple subjects.
 
 CREATE TABLE IF NOT EXISTS BelongsToSubject(
 	BookId INTEGER NOT NULL,
@@ -1073,30 +1103,94 @@ INSERT INTO BelongsToSubject VALUES(88, 7);
 INSERT INTO BelongsToSubject VALUES(88, 11);
 INSERT INTO BelongsToSubject VALUES(88, 26);
 
-INSERT INTO BelongsToSubject VALUES(89, );
-INSERT INTO BelongsToSubject VALUES(90, );
-INSERT INTO BelongsToSubject VALUES(91, );
+INSERT INTO BelongsToSubject VALUES(89, 7);
+INSERT INTO BelongsToSubject VALUES(89, 14);
+INSERT INTO BelongsToSubject VALUES(89, 26);
 
-INSERT INTO BelongsToSubject VALUES(92, );
-INSERT INTO BelongsToSubject VALUES(93, );
+INSERT INTO BelongsToSubject VALUES(90, 7);
+INSERT INTO BelongsToSubject VALUES(90, 14);
+INSERT INTO BelongsToSubject VALUES(90, 26);
 
-INSERT INTO BelongsToSubject VALUES(94, );
-INSERT INTO BelongsToSubject VALUES(95, );
+INSERT INTO BelongsToSubject VALUES(91, 7);
+INSERT INTO BelongsToSubject VALUES(91, 14);
+INSERT INTO BelongsToSubject VALUES(91, 26);
 
-INSERT INTO BelongsToSubject VALUES(96, );
-INSERT INTO BelongsToSubject VALUES(97, );
+INSERT INTO BelongsToSubject VALUES(92, 27);
+INSERT INTO BelongsToSubject VALUES(93, 28);
+INSERT INTO BelongsToSubject VALUES(93, 29);
+INSERT INTO BelongsToSubject VALUES(93, 31);
+INSERT INTO BelongsToSubject VALUES(93, 34);
+INSERT INTO BelongsToSubject VALUES(93, 35);
 
-INSERT INTO BelongsToSubject VALUES(98, );
+INSERT INTO BelongsToSubject VALUES(93, 27);
+INSERT INTO BelongsToSubject VALUES(93, 30);
+INSERT INTO BelongsToSubject VALUES(93, 31);
+INSERT INTO BelongsToSubject VALUES(93, 32);
 
-INSERT INTO BelongsToSubject VALUES(99, );
-INSERT INTO BelongsToSubject VALUES(100, );
+INSERT INTO BelongsToSubject VALUES(94, 27);
+INSERT INTO BelongsToSubject VALUES(94, 28);
+INSERT INTO BelongsToSubject VALUES(94, 31);
+INSERT INTO BelongsToSubject VALUES(94, 33);
 
-INSERT INTO BelongsToSubject VALUES(101, );
-INSERT INTO BelongsToSubject VALUES(102, );
+INSERT INTO BelongsToSubject VALUES(95, 28);
+INSERT INTO BelongsToSubject VALUES(95, 31);
+INSERT INTO BelongsToSubject VALUES(95, 33);
+INSERT INTO BelongsToSubject VALUES(95, 35);
 
-INSERT INTO BelongsToSubject VALUES(103, );
-INSERT INTO BelongsToSubject VALUES(104, );
-INSERT INTO BelongsToSubject VALUES(105, );
+INSERT INTO BelongsToSubject VALUES(96, 28);
+INSERT INTO BelongsToSubject VALUES(96, 31);
+INSERT INTO BelongsToSubject VALUES(96, 34);
+INSERT INTO BelongsToSubject VALUES(96, 35);
+
+INSERT INTO BelongsToSubject VALUES(97, 28);
+INSERT INTO BelongsToSubject VALUES(97, 31);
+INSERT INTO BelongsToSubject VALUES(97, 34);
+INSERT INTO BelongsToSubject VALUES(97, 35);
+
+INSERT INTO BelongsToSubject VALUES(98, 31);
+INSERT INTO BelongsToSubject VALUES(98, 34);
+INSERT INTO BelongsToSubject VALUES(98, 35);
+INSERT INTO BelongsToSubject VALUES(98, 49);
+
+INSERT INTO BelongsToSubject VALUES(99, 31);
+INSERT INTO BelongsToSubject VALUES(99, 36);
+INSERT INTO BelongsToSubject VALUES(99, 37);
+INSERT INTO BelongsToSubject VALUES(99, 38);
+
+INSERT INTO BelongsToSubject VALUES(100, 11);
+INSERT INTO BelongsToSubject VALUES(100, 19);
+INSERT INTO BelongsToSubject VALUES(100, 31);
+INSERT INTO BelongsToSubject VALUES(100, 38);
+INSERT INTO BelongsToSubject VALUES(100, 42);
+
+INSERT INTO BelongsToSubject VALUES(101, 27);
+INSERT INTO BelongsToSubject VALUES(101, 28);
+INSERT INTO BelongsToSubject VALUES(101, 30);
+INSERT INTO BelongsToSubject VALUES(101, 31);
+INSERT INTO BelongsToSubject VALUES(101, 33);
+
+INSERT INTO BelongsToSubject VALUES(102, 27);
+INSERT INTO BelongsToSubject VALUES(102, 28);
+INSERT INTO BelongsToSubject VALUES(102, 31);
+INSERT INTO BelongsToSubject VALUES(102, 33);
+
+INSERT INTO BelongsToSubject VALUES(103, 19);
+INSERT INTO BelongsToSubject VALUES(103, 28);
+INSERT INTO BelongsToSubject VALUES(103, 31);
+INSERT INTO BelongsToSubject VALUES(103, 45);
+INSERT INTO BelongsToSubject VALUES(103, 50);
+
+INSERT INTO BelongsToSubject VALUES(104, 9);
+INSERT INTO BelongsToSubject VALUES(104, 28);
+INSERT INTO BelongsToSubject VALUES(104, 29);
+INSERT INTO BelongsToSubject VALUES(104, 31);
+INSERT INTO BelongsToSubject VALUES(104, 34);
+INSERT INTO BelongsToSubject VALUES(104, 35);
+INSERT INTO BelongsToSubject VALUES(104, 49);
+
+INSERT INTO BelongsToSubject VALUES(105, 16);
+INSERT INTO BelongsToSubject VALUES(105, 42);
+INSERT INTO BelongsToSubject VALUES(105, 19);
 
 
 COMMIT;
