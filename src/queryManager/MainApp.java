@@ -14,21 +14,6 @@ import java.sql.*;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-    private Connection connection = null;
-
-    /**
-     * Constructor which initializes the connection to the database.
-     */
-   /* public MainApp(){
-        try{
-            // create a database connection
-            this.connection = DriverManager.getConnection("jdbc:sqlite:.\\src\\queryManager\\database\\database.db");
-            System.out.println("Connection to database: successful");
-
-        }catch(SQLException e){
-            System.err.println(e.getMessage());
-        }
-    }*/
 
     /**
      * Gets executed as the application starts.
@@ -53,9 +38,7 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("view/layout.fxml"));
             BorderPane rootLayout = (BorderPane) loader.load();
 
-            //Controller controller = loader.getController();
-
-            Scene scene = new Scene(rootLayout);
+            Scene scene = new Scene(rootLayout, 800, 500);
             primaryStage.setScene(scene);
             primaryStage.show();
 

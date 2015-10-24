@@ -33,11 +33,6 @@ public class Controller implements Initializable{
     private TreeView<String> genresTree;
 
     private Statement statement;
-    private MainApp mainApp;
-
-    public void setStatement(Statement statement){
-        this.statement = statement;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,12 +49,16 @@ public class Controller implements Initializable{
         }
 
         initializeAuthorsTree();
-        //initializeBooksTree();
-        //initializePublishersTree();
+        initializeBooksTree();
+        initializePublishersTree();
         //initializeYearsTree();
-        //initializeGenresTree();
+        initializeGenresTree();
     }
 
+    /**
+     * Method that initializes the Authors treeView with data from database
+     * ordered alphabetically.
+     */
     public void initializeAuthorsTree(){
         CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Authors");
         rootItem.setExpanded(true);
@@ -70,7 +69,7 @@ public class Controller implements Initializable{
         authorsTree.setCellFactory(CheckBoxTreeCell.forTreeView());
 
         try{
-            ResultSet rs = statement.executeQuery("select Author from Authors");
+            ResultSet rs = statement.executeQuery("select Author from Authors order by Author collate nocase");
             while(rs.next()){
                 CheckBoxTreeItem<String> checkBoxTreeItem = new CheckBoxTreeItem<>(rs.getString("Author"));
 
@@ -87,12 +86,62 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     * Method that initializes the Books treeView with data from database
+     * ordered alphabetically.
+     */
     public void initializeBooksTree(){
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Books");
+        rootItem.setExpanded(true);
 
+        booksTree.setRoot(rootItem);
+        booksTree.setEditable(true);
+
+        booksTree.setCellFactory(CheckBoxTreeCell.forTreeView());
+
+        try{
+            ResultSet rs = statement.executeQuery("select Title from Books order by Title collate nocase");
+            while(rs.next()){
+                CheckBoxTreeItem<String> checkBoxTreeItem = new CheckBoxTreeItem<>(rs.getString("Title"));
+
+                checkBoxTreeItem.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    if(newValue){
+                        System.out.println("The selected item is " + checkBoxTreeItem.valueProperty().get());
+                    }
+                });
+                rootItem.getChildren().add(checkBoxTreeItem);
+            }
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     public void initializePublishersTree(){
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Publishers");
+        rootItem.setExpanded(true);
 
+        publishersTree.setRoot(rootItem);
+        publishersTree.setEditable(true);
+
+        publishersTree.setCellFactory(CheckBoxTreeCell.forTreeView());
+
+        try{
+            ResultSet rs = statement.executeQuery("select Publisher from Publishers order by Publisher collate nocase");
+            while(rs.next()){
+                CheckBoxTreeItem<String> checkBoxTreeItem = new CheckBoxTreeItem<>(rs.getString("Publisher"));
+
+                checkBoxTreeItem.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    if(newValue){
+                        System.out.println("The selected item is " + checkBoxTreeItem.valueProperty().get());
+                    }
+                });
+                rootItem.getChildren().add(checkBoxTreeItem);
+            }
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     public void initializeYearsTree(){
@@ -100,6 +149,29 @@ public class Controller implements Initializable{
     }
 
     public void initializeGenresTree(){
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Subject");
+        rootItem.setExpanded(true);
 
+        genresTree.setRoot(rootItem);
+        genresTree.setEditable(true);
+
+        genresTree.setCellFactory(CheckBoxTreeCell.forTreeView());
+
+        try{
+            ResultSet rs = statement.executeQuery("select Subject from Subjects order by Subject collate nocase");
+            while(rs.next()){
+                CheckBoxTreeItem<String> checkBoxTreeItem = new CheckBoxTreeItem<>(rs.getString("Subject"));
+
+                checkBoxTreeItem.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    if(newValue){
+                        System.out.println("The selected item is " + checkBoxTreeItem.valueProperty().get());
+                    }
+                });
+                rootItem.getChildren().add(checkBoxTreeItem);
+            }
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
     }
 }
