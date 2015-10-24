@@ -6,7 +6,6 @@ import javafx.scene.control.CheckBoxTreeItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.CheckBoxTreeCell;
-import queryManager.MainApp;
 
 import java.net.URL;
 import java.sql.*;
@@ -51,7 +50,7 @@ public class Controller implements Initializable{
         initializeAuthorsTree();
         initializeBooksTree();
         initializePublishersTree();
-        //initializeYearsTree();
+        initializeYearsTree();
         initializeGenresTree();
     }
 
@@ -145,7 +144,30 @@ public class Controller implements Initializable{
     }
 
     public void initializeYearsTree(){
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Years");
+        rootItem.setExpanded(true);
 
+        yearsTree.setRoot(rootItem);
+        yearsTree.setEditable(true);
+
+        yearsTree.setCellFactory(CheckBoxTreeCell.forTreeView());
+
+        try{
+            ResultSet rs = statement.executeQuery("select distinct Year from PublishedBy_On order by Year");
+            while(rs.next()){
+                CheckBoxTreeItem<String> checkBoxTreeItem = new CheckBoxTreeItem<>(rs.getString("Year"));
+
+                checkBoxTreeItem.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                    if(newValue){
+                        System.out.println("The selected item is " + checkBoxTreeItem.valueProperty().get());
+                    }
+                });
+                rootItem.getChildren().add(checkBoxTreeItem);
+            }
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
     }
 
     public void initializeGenresTree(){
