@@ -13,7 +13,7 @@
                   <TreeView fx:id="booksTree" prefHeight="200.0" prefWidth="200.0" />
                   <TreeView fx:id="publishersTree" prefHeight="200.0" prefWidth="200.0" />
                   <TreeView fx:id="yearsTree" prefHeight="200.0" prefWidth="200.0" />
-                  <TreeView fx:id="genresTree" prefHeight="200.0" prefWidth="200.0" />
+                  <TreeView fx:id="subjectsTree" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </HBox>
             <TableView fx:id="table" prefHeight="456.0" prefWidth="640.0" />

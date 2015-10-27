@@ -1,10 +1,12 @@
 package queryManager.view;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBoxTreeItem;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 
 import java.net.URL;
@@ -14,7 +16,7 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable{
 
     @FXML
-    private TableView table;
+    private TableView<ObservableList<StringProperty>> table;
 
     @FXML
     private TreeView<String> authorsTree;
@@ -29,29 +31,56 @@ public class Controller implements Initializable{
     private TreeView<String> yearsTree;
 
     @FXML
-    private TreeView<String> genresTree;
+    private TreeView<String> subjectsTree;
 
     private Statement statement;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        Connection connection = null;
         try{
             // create a database connection
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:.\\src\\queryManager\\database\\database.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:.\\src\\queryManager\\database\\database.db");
             System.out.println("Connection to database: successful");
             this.statement = connection.createStatement();
-            this.statement.setQueryTimeout(30);  // set timeout to 30 sec.
+            this.statement.setQueryTimeout(300);  // set timeout to 30 sec.
+
+            ResultSet rs = this.statement.executeQuery("select Title, Author, Publisher, Year " +
+                                                       "from Authors, Books, Publishers, WrittenBy, PublishedBy_On " +
+                                                       "where " +
+                                                       "WrittenBy.BookId = Books.BookId " +
+                                                       "and " +
+                                                       "WrittenBy.AuthorId = Authors.AuthorId " +
+                    "and " +
+                    "PublishedBy_On.BookId = Books.BookId " +
+                    "and " +
+                    "PublishedBy_On.PublisherId = Publishers.PublisherId");
+
+            populateTable(rs);
+
+            initializeAuthorsTree();
+            initializeBooksTree();
+            initializePublishersTree();
+            initializeYearsTree();
+            initializeSubjectsTree();
 
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
-
-        initializeAuthorsTree();
-        initializeBooksTree();
-        initializePublishersTree();
-        initializeYearsTree();
-        initializeGenresTree();
+        finally
+        {
+            try
+            {
+                if(connection != null)
+                    connection.close();
+            }
+            catch(SQLException e)
+            {
+                // connection close failed.
+                System.err.println(e.getMessage());
+            }
+        }
     }
 
     /**
@@ -59,7 +88,7 @@ public class Controller implements Initializable{
      * ordered alphabetically.
      */
     public void initializeAuthorsTree(){
-        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Authors");
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("All authors");
         rootItem.setExpanded(true);
 
         authorsTree.setRoot(rootItem);
@@ -83,6 +112,7 @@ public class Controller implements Initializable{
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
+
     }
 
     /**
@@ -90,7 +120,7 @@ public class Controller implements Initializable{
      * ordered alphabetically.
      */
     public void initializeBooksTree(){
-        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Books");
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("All books");
         rootItem.setExpanded(true);
 
         booksTree.setRoot(rootItem);
@@ -117,7 +147,7 @@ public class Controller implements Initializable{
     }
 
     public void initializePublishersTree(){
-        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Publishers");
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("All publishers");
         rootItem.setExpanded(true);
 
         publishersTree.setRoot(rootItem);
@@ -144,7 +174,7 @@ public class Controller implements Initializable{
     }
 
     public void initializeYearsTree(){
-        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Years");
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("All years");
         rootItem.setExpanded(true);
 
         yearsTree.setRoot(rootItem);
@@ -170,14 +200,17 @@ public class Controller implements Initializable{
         }
     }
 
-    public void initializeGenresTree(){
-        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("Subject");
+    /**
+     * Method for initializing the subjects tree
+     */
+    public void initializeSubjectsTree(){
+        CheckBoxTreeItem<String> rootItem = new CheckBoxTreeItem<>("All subjects");
         rootItem.setExpanded(true);
 
-        genresTree.setRoot(rootItem);
-        genresTree.setEditable(true);
+        subjectsTree.setRoot(rootItem);
+        subjectsTree.setEditable(true);
 
-        genresTree.setCellFactory(CheckBoxTreeCell.forTreeView());
+        subjectsTree.setCellFactory(CheckBoxTreeCell.forTreeView());
 
         try{
             ResultSet rs = statement.executeQuery("select Subject from Subjects order by Subject collate nocase");
@@ -195,5 +228,74 @@ public class Controller implements Initializable{
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
+    }
+
+    /**
+     * Method for populating a table with data extracted from an SQL query.
+     * @param rs - result set containing data from a certain query previously made to
+     *           a database.
+     */
+    public void populateTable(ResultSet rs){
+        this.table.getItems().clear();
+        this.table.getColumns().clear();
+        this.table.setPlaceholder(new Label("Loading..."));
+
+        try{
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            int columnsNumber = rsmd.getColumnCount();
+
+            //Columns are created
+            try{
+                for(int column = 0; column < columnsNumber; column++){
+                    this.table.getColumns().add(createColumn(column, rsmd.getColumnName(column+1)));
+                }
+            }catch(SQLException e){
+                System.err.println(e.getMessage());
+            }
+
+            //Data gets poured into the columns.
+            while(rs.next()){
+                try{
+                    ObservableList<StringProperty> data = FXCollections.observableArrayList();
+                    for(int column = 1; column <= columnsNumber; column++){
+                        System.out.println(rs.getString(column));
+                        data.add(new SimpleStringProperty(rs.getString(column)));
+                    }
+                    this.table.getItems().add(data);
+                }catch (SQLException e){
+                    System.err.println(e.getMessage());
+                }
+            }
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Method for creating table columns without necessarily binding
+     * them to the structure of another class; as is usually done.
+     * @param columnIndex - index in table of the column to create, starting at 0.
+     * @param columnTitle - name/title of the column to create.
+     * @return TableColumn - table column object created from a name received.
+     */
+    private TableColumn<ObservableList<StringProperty>, String> createColumn(int columnIndex, String columnTitle){
+        TableColumn<ObservableList<StringProperty>, String> column = new TableColumn<>();
+        String title;
+        if (columnTitle == null || columnTitle.trim().length() == 0) {
+            title = "Column " + (columnIndex + 1);
+        } else {
+            title = columnTitle;
+        }
+        column.setText(title);
+        column.setCellValueFactory(cellDataFeatures -> {
+                    ObservableList<StringProperty> values = cellDataFeatures.getValue();
+                    if (columnIndex >= values.size()) {
+                        return new SimpleStringProperty("");
+                    } else {
+                        return cellDataFeatures.getValue().get(columnIndex);
+                    }
+                });
+        return column;
     }
 }
