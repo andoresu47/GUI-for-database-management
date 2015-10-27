@@ -1,5 +1,5 @@
 .background {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #181818;
 }
 
 .label {
@@ -23,17 +23,39 @@
     -fx-opacity: 1;
 }
 
+.tree-view {
+    -fx-base: #383838;
+    -fx-control-inner-background: #585858;
+    -fx-background-color: #181818;
+}
+
+.check-box *.box {
+  -fx-background-color: #D8D8D8;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #383838, -fx-focus-color;
+}
+
+.check-box:indeterminate .mark {
+    -fx-background-color: #383838, -fx-focus-color;
+}
+
+.check-box:hover .box {
+    -fx-color: -fx-hover-base;
+}
+
 .table-view {
-    -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
-    -fx-table-cell-border-color: transparent;
+    -fx-base: #383838;
+    -fx-control-inner-background: #282828;
+    -fx-background-color: #181818;
+    -fx-table-cell-border-color: #181818;
     -fx-table-header-border-color: transparent;
-    -fx-padding: 5;
+    -fx-padding: 2;
 }
 
 .table-view .column-header-background {
-    -fx-background-color: transparent;
+    -fx-background-color: #AB4642;
 }
 
 .table-view .column-header, .table-view .filler {
@@ -49,11 +71,15 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 20pt;
+    -fx-font-size: 18pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
-    -fx-alignment: center-left;
+    -fx-alignment: center;
     -fx-opacity: 1;
+}
+
+.table-view .table-column {
+    -fx-alignment: center;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
@@ -61,8 +87,8 @@
 }
 
 .split-pane:horizontal > .split-pane-divider {
-    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
-    -fx-background-color: transparent, derive(#1d1d1d,20%);
+    -fx-border-color: transparent #181818 transparent #181818;
+    -fx-background-color: transparent, derive(#181818,20%);
 }
 
 .split-pane {
@@ -70,11 +96,11 @@
 }
 
 .menu-bar {
-    -fx-background-color: derive(#1d1d1d,20%);
+    -fx-background-color: derive(#282828,20%);
 }
 
 .context-menu {
-    -fx-background-color: derive(#1d1d1d,50%);
+    -fx-background-color: derive(#282828,50%);
 }
 
 .menu-bar .label {
@@ -95,7 +121,7 @@
 
 /* 
  * Metro style Push Button
- * Author: Pedro Duque Vieira
+ * Original Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 .button {
@@ -103,7 +129,7 @@
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #181818;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
@@ -116,7 +142,7 @@
 
 .button:pressed, .button:default:hover:pressed {
   -fx-background-color: white;
-  -fx-text-fill: #1d1d1d;
+  -fx-text-fill: #181818;
 }
 
 .button:focused {
@@ -129,7 +155,7 @@
 
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #181818;
     -fx-text-fill: white;
 }
 

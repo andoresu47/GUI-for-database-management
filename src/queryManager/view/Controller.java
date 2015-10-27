@@ -96,6 +96,8 @@ public class Controller implements Initializable{
 
         authorsTree.setCellFactory(CheckBoxTreeCell.forTreeView());
 
+        authorsTree.prefWidthProperty().bind(this.table.widthProperty().divide(4));
+
         try{
             ResultSet rs = statement.executeQuery("select Author from Authors order by Author collate nocase");
             while(rs.next()){
@@ -128,6 +130,8 @@ public class Controller implements Initializable{
 
         booksTree.setCellFactory(CheckBoxTreeCell.forTreeView());
 
+        booksTree.prefWidthProperty().bind(this.table.widthProperty().divide(4));
+
         try{
             ResultSet rs = statement.executeQuery("select Title from Books order by Title collate nocase");
             while(rs.next()){
@@ -155,6 +159,8 @@ public class Controller implements Initializable{
 
         publishersTree.setCellFactory(CheckBoxTreeCell.forTreeView());
 
+        publishersTree.prefWidthProperty().bind(this.table.widthProperty().divide(4));
+
         try{
             ResultSet rs = statement.executeQuery("select Publisher from Publishers order by Publisher collate nocase");
             while(rs.next()){
@@ -181,6 +187,8 @@ public class Controller implements Initializable{
         yearsTree.setEditable(true);
 
         yearsTree.setCellFactory(CheckBoxTreeCell.forTreeView());
+
+        yearsTree.prefWidthProperty().bind(this.table.widthProperty().divide(4));
 
         try{
             ResultSet rs = statement.executeQuery("select distinct Year from PublishedBy_On order by Year");
@@ -212,6 +220,8 @@ public class Controller implements Initializable{
 
         subjectsTree.setCellFactory(CheckBoxTreeCell.forTreeView());
 
+        subjectsTree.prefWidthProperty().bind(this.table.widthProperty().divide(4));
+
         try{
             ResultSet rs = statement.executeQuery("select Subject from Subjects order by Subject collate nocase");
             while(rs.next()){
@@ -235,7 +245,7 @@ public class Controller implements Initializable{
      * @param rs - result set containing data from a certain query previously made to
      *           a database.
      */
-    public void populateTable(ResultSet rs){
+    public synchronized void populateTable(ResultSet rs){
         this.table.getItems().clear();
         this.table.getColumns().clear();
         this.table.setPlaceholder(new Label("Loading..."));
@@ -248,7 +258,7 @@ public class Controller implements Initializable{
             //Columns are created
             try{
                 for(int column = 0; column < columnsNumber; column++){
-                    this.table.getColumns().add(createColumn(column, rsmd.getColumnName(column+1)));
+                    this.table.getColumns().add(createColumn(column, rsmd.getColumnName(column+1), columnsNumber));
                 }
             }catch(SQLException e){
                 System.err.println(e.getMessage());
@@ -259,7 +269,6 @@ public class Controller implements Initializable{
                 try{
                     ObservableList<StringProperty> data = FXCollections.observableArrayList();
                     for(int column = 1; column <= columnsNumber; column++){
-                        System.out.println(rs.getString(column));
                         data.add(new SimpleStringProperty(rs.getString(column)));
                     }
                     this.table.getItems().add(data);
@@ -279,7 +288,7 @@ public class Controller implements Initializable{
      * @param columnTitle - name/title of the column to create.
      * @return TableColumn - table column object created from a name received.
      */
-    private TableColumn<ObservableList<StringProperty>, String> createColumn(int columnIndex, String columnTitle){
+    private TableColumn<ObservableList<StringProperty>, String> createColumn(int columnIndex, String columnTitle, int columnsNumber){
         TableColumn<ObservableList<StringProperty>, String> column = new TableColumn<>();
         String title;
         if (columnTitle == null || columnTitle.trim().length() == 0) {
@@ -288,6 +297,7 @@ public class Controller implements Initializable{
             title = columnTitle;
         }
         column.setText(title);
+        column.prefWidthProperty().bind(this.table.widthProperty().divide(columnsNumber));
         column.setCellValueFactory(cellDataFeatures -> {
                     ObservableList<StringProperty> values = cellDataFeatures.getValue();
                     if (columnIndex >= values.size()) {

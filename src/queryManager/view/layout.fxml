@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="queryManager.view.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@CustomStyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="queryManager.view.Controller">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="367.0" prefWidth="600.0">
+            <HBox prefHeight="367.0" prefWidth="600.0" spacing="2.0" style="-fx-background-color: #383838;">
                <children>
                   <TreeView fx:id="authorsTree" prefHeight="200.0" prefWidth="200.0" />
                   <TreeView fx:id="booksTree" prefHeight="200.0" prefWidth="200.0" />
@@ -15,6 +17,9 @@
                   <TreeView fx:id="yearsTree" prefHeight="200.0" prefWidth="200.0" />
                   <TreeView fx:id="subjectsTree" prefHeight="200.0" prefWidth="200.0" />
                </children>
+               <padding>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </padding>
             </HBox>
             <TableView fx:id="table" prefHeight="456.0" prefWidth="640.0" />
          </children>
